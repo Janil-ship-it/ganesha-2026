@@ -65,6 +65,23 @@
       background: linear-gradient(to bottom, #FDDE6C 0%, #FFF5D1 15%, #FFF8E7 40%, #FFF5D1 75%, #FDDE6C 100%);
     }
 
+    /* Page Preloader */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: #FDDE6C;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    #preloader.fade-out {
+      opacity: 0;
+      visibility: hidden;
+    }
+
     /* Sunrise Background Animations */
     @keyframes pulse-sunrise {
 
@@ -199,6 +216,20 @@
 
 <body class="bg-seamless min-h-screen">
 
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="text-center">
+      <div class="w-16 h-16 mx-auto mb-4 text-red-800 animate-bounce">
+        <svg viewBox="0 0 100 100" class="w-full h-full fill-current">
+          <circle cx="50" cy="65" r="25" fill="#7F1D1D" />
+          <circle cx="50" cy="35" r="18" fill="#7F1D1D" />
+          <polygon points="35,20 50,0 65,20" fill="#DC2626" />
+        </svg>
+      </div>
+      <p class="font-cinzel font-bold text-red-800 tracking-widest text-sm">IITGN GANESHOTSAV 2026</p>
+    </div>
+  </div>
+
   <main class="relative w-full overflow-x-hidden">
 
     <div class="fixed inset-0 w-full h-full pointer-events-none z-0 flex justify-center items-center overflow-hidden">
@@ -249,14 +280,14 @@
       </div>
     </div>
 
-    <!-- Navbar with min 44px tap targets and 8px spacing -->
+    <!-- Navbar with Refined Ganesha Icon & Instant Scroll Triggers -->
     <nav
       class="fixed top-0 left-0 w-full px-6 py-3 flex justify-between items-center z-50 bg-white/30 backdrop-blur-md border-b border-amber-900/10 transition-transform duration-500 will-change-transform"
       id="navbar">
-      <a href="index.html" class="flex items-center gap-2 text-red-800 min-h-[44px] min-w-[44px] py-2">
-        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+      <a href="index.html" class="flex items-center gap-2.5 text-red-800 min-h-[44px] min-w-[44px] py-2">
+        <svg class="w-8 h-8 fill-current drop-shadow-sm" viewBox="0 0 24 24">
           <path
-            d="M12,2C6.48,2 2,6.48 2,12C2,17.52 6.48,22 12,22C17.52,22 22,17.52 22,12C22,6.48 17.52,2 12,2M11,19.93C7.05,19.43 4,16.05 4,12C4,7.95 7.05,4.57 11,4.07V19.93M13,4.07C16.95,4.57 20,7.95 20,12C20,16.05 16.95,19.43 13,19.93V4.07Z" />
+            d="M12 2C9.5 2 7.5 4 7.5 6.5C7.5 7.5 7.8 8.4 8.3 9.2C6.5 10.2 5.2 12.1 5.2 14.3C5.2 17.5 7.8 20.1 11 20.1H13C16.2 20.1 18.8 17.5 18.8 14.3C18.8 12.1 17.5 10.2 15.7 9.2C16.2 8.4 16.5 7.5 16.5 6.5C16.5 4 14.5 2 12 2ZM12 4C13.4 4 14.5 5.1 14.5 6.5C14.5 7.9 13.4 9 12 9C10.6 9 9.5 7.9 9.5 6.5C9.5 5.1 10.6 4 12 4ZM12 11C14.8 11 17.1 13.1 17.5 15.8C16.6 16.5 15.4 17 14 17.2C13.4 16.5 12.5 16 12 16C11.5 16 10.6 16.5 10 17.2C8.6 17 7.4 16.5 6.5 15.8C6.9 13.1 9.2 11 12 11Z" />
         </svg>
         <div>
           <span class="font-bold text-sm tracking-widest leading-none block">IITGN</span>
@@ -264,12 +295,15 @@
         </div>
       </a>
       <div class="hidden md:flex gap-8 text-sm font-medium text-amber-950 items-center">
-        <a href="#memories" class="hover:text-red-700 transition min-h-[44px] flex items-center">Memories</a>
-        <a href="#timeline" class="hover:text-red-700 transition min-h-[44px] flex items-center">Itinerary</a>
-        <a href="#plans" class="hover:text-red-700 transition min-h-[44px] flex items-center">Participate</a>
+        <a href="#memories" onclick="lenis.scrollTo('#memories'); return false;"
+          class="hover:text-red-700 transition min-h-[44px] flex items-center cursor-pointer">Memories</a>
+        <a href="#timeline" onclick="lenis.scrollTo('#timeline'); return false;"
+          class="hover:text-red-700 transition min-h-[44px] flex items-center cursor-pointer">Itinerary</a>
+        <a href="#plans" onclick="lenis.scrollTo('#plans'); return false;"
+          class="hover:text-red-700 transition min-h-[44px] flex items-center cursor-pointer">Participate</a>
       </div>
-      <a href="#plans"
-        class="bg-red-800 text-white px-5 min-h-[44px] flex items-center justify-center rounded-full text-sm font-semibold hover:bg-red-900 transition shadow-lg">Contribute
+      <a href="#plans" onclick="lenis.scrollTo('#plans'); return false;"
+        class="bg-red-800 text-white px-5 min-h-[44px] flex items-center justify-center rounded-full text-sm font-semibold hover:bg-red-900 transition shadow-lg cursor-pointer">Contribute
         ↗</a>
     </nav>
 
@@ -284,7 +318,6 @@
           7 Sep — 11 Sep, 2026</span>
       </div>
 
-      <!-- Value Proposition Headline Above the Fold -->
       <div class="text-center relative z-20 gs-hero w-full px-4">
         <h1 class="font-cinzel font-bold text-red-800 text-sm sm:text-lg tracking-[0.2em] uppercase mb-4">Annual
           Student-Led Ganeshotsav Celebration at IIT Gandhinagar</h1>
@@ -301,10 +334,9 @@
           Where devotion meets the vibrant spirit of our campus. Come celebrate the remover of obstacles with us.
         </p>
 
-        <!-- Conversion Action Button -->
         <div class="mt-8 relative z-20 flex justify-center">
-          <a href="#plans"
-            class="bg-red-800 text-white font-semibold px-8 py-3 rounded-full min-h-[44px] min-w-[44px] flex items-center justify-center shadow-lg hover:bg-red-900 transition text-sm">Register
+          <a href="#plans" onclick="lenis.scrollTo('#plans'); return false;"
+            class="bg-red-800 text-white font-semibold px-8 py-3 rounded-full min-h-[44px] min-w-[44px] flex items-center justify-center shadow-lg hover:bg-red-900 transition text-sm cursor-pointer">Register
             for Events & Contribute</a>
         </div>
 
@@ -580,6 +612,11 @@
   </div>
 
   <script>
+    // Remove preloader on load
+    window.addEventListener('load', () => {
+      document.getElementById('preloader').classList.add('fade-out');
+    });
+
     // Countdown
     const targetDate = new Date("September 13, 2026 00:00:00").getTime();
     setInterval(() => {
@@ -591,8 +628,8 @@
       document.getElementById("cd-secs").innerText = Math.floor((dist % 60000) / 1000).toString().padStart(2, '0');
     }, 1000);
 
-    // Lenis Smooth Scroll
-    const lenis = new Lenis({ duration: 2.5, smooth: true, mouseMultiplier: 1 });
+    // Lenis Smooth Scroll with optimized duration
+    const lenis = new Lenis({ duration: 1.2, smooth: true, mouseMultiplier: 1 });
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add((time) => lenis.raf(time * 1000));
     gsap.ticker.lagSmoothing(0, 0);
@@ -620,15 +657,15 @@
     gsap.utils.toArray('.parallax-img').forEach(img => {
       gsap.to(img, { yPercent: 20, ease: "none", scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
     });
-    gsap.fromTo('.gs-hero', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1.5, stagger: 0.2, ease: "power3.out" });
+    gsap.fromTo('.gs-hero', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2, stagger: 0.15, ease: "power3.out" });
     gsap.utils.toArray('.gs-reveal').forEach(elem => {
-      gsap.fromTo(elem, { y: 40, opacity: 0 }, { scrollTrigger: { trigger: elem, start: "top 85%" }, y: 0, opacity: 1, duration: 1.2, ease: "power2.out" });
+      gsap.fromTo(elem, { y: 40, opacity: 0 }, { scrollTrigger: { trigger: elem, start: "top 85%" }, y: 0, opacity: 1, duration: 1, ease: "power2.out" });
     });
     gsap.utils.toArray('.image-card').forEach(card => {
-      gsap.fromTo(card, { y: 60, opacity: 0 }, { scrollTrigger: { trigger: card, start: "top 80%" }, y: 0, opacity: 1, duration: 1.5, ease: "power2.out" });
+      gsap.fromTo(card, { y: 50, opacity: 0 }, { scrollTrigger: { trigger: card, start: "top 80%" }, y: 0, opacity: 1, duration: 1.2, ease: "power2.out" });
     });
     gsap.utils.toArray('.gs-reveal-timeline').forEach((item, i) => {
-      gsap.fromTo(item, { x: -30, opacity: 0 }, { scrollTrigger: { trigger: item, start: "top 90%" }, x: 0, opacity: 1, duration: 1, ease: "power2.out", delay: i * 0.1 });
+      gsap.fromTo(item, { x: -30, opacity: 0 }, { scrollTrigger: { trigger: item, start: "top 90%" }, x: 0, opacity: 1, duration: 0.8, ease: "power2.out", delay: i * 0.1 });
     });
   </script>
 </body>
