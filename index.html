@@ -4,19 +4,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IITGN Ganeshotsav 2026 | Annual Student-Led Celebration</title>
+  <title>IITGN Ganeshotsav 2026 | Annual Celebration</title>
   <meta name="description"
-    content="Experience the vibrant student-led Ganeshotsav 2026 celebrations at IIT Gandhinagar with grand aartis, cultural nights, and community devotion." />
+    content="Experience the vibrant student-led Ganeshotsav 2026 celebrations at IIT Gandhinagar." />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800;900&family=Poppins:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap"
     rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
 
   <style>
+    /* Smooth Scroll Base */
     html.lenis,
     html.lenis body {
       height: auto;
@@ -53,19 +54,29 @@
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #FDDE6C;
-      color: #782F1D;
+      color: #450A0A;
       margin: 0;
+      overflow-x: hidden;
     }
 
     .font-cinzel {
       font-family: 'Cinzel', serif;
     }
 
-    .bg-seamless {
-      background: linear-gradient(to bottom, #FDDE6C 0%, #FFF5D1 15%, #FFF8E7 40%, #FFF5D1 75%, #FDDE6C 100%);
+    /* Elegant Color Palette */
+    .bg-ivory {
+      background-color: #FFF5D1;
     }
 
-    /* Page Preloader */
+    .text-maroon {
+      color: #7F1D1D;
+    }
+
+    .border-maroon {
+      border-color: #7F1D1D;
+    }
+
+    /* Preloader */
     #preloader {
       position: fixed;
       inset: 0;
@@ -74,7 +85,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
     }
 
     #preloader.fade-out {
@@ -82,114 +93,18 @@
       visibility: hidden;
     }
 
-    /* Sunrise Background Animations */
-    @keyframes pulse-sunrise {
-
-      0%,
-      100% {
-        opacity: 0.3;
-        transform: scale(0.95);
-      }
-
-      50% {
-        opacity: 0.7;
-        transform: scale(1.05);
-      }
+    /* SVG Drawing Animation Classes */
+    .murti-path {
+      stroke-dasharray: 2000;
+      stroke-dashoffset: 2000;
+      will-change: stroke-dashoffset, transform;
     }
 
-    .animate-sunrise {
-      animation: pulse-sunrise 4s ease-in-out infinite;
-      transform-origin: center;
-    }
-
-    @keyframes pulse-glow {
-
-      0%,
-      100% {
-        opacity: 0.5;
-        transform: scale(0.9);
-      }
-
-      50% {
-        opacity: 0.9;
-        transform: scale(1.1);
-      }
-    }
-
-    .animate-glow {
-      animation: pulse-glow 5s ease-in-out infinite;
-      transform-origin: center;
-    }
-
-    /* Sprinting Mouse (Mushak) Animations */
-    @keyframes run-bounce {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-4px);
-      }
-    }
-
-    .running-mushak {
-      animation: run-bounce 0.25s ease-in-out infinite;
-    }
-
-    @keyframes run-leg-f {
-
-      0%,
-      100% {
-        transform: rotate(-25deg);
-      }
-
-      50% {
-        transform: rotate(30deg);
-      }
-    }
-
-    @keyframes run-leg-b {
-
-      0%,
-      100% {
-        transform: rotate(30deg);
-      }
-
-      50% {
-        transform: rotate(-25deg);
-      }
-    }
-
-    .leg-f {
-      animation: run-leg-f 0.25s linear infinite;
-    }
-
-    .leg-b {
-      animation: run-leg-b 0.25s linear infinite;
-    }
-
-    @keyframes float-modak {
-
-      0%,
-      100% {
-        transform: translateY(0) scale(1);
-      }
-
-      50% {
-        transform: translateY(-3px) scale(1.1);
-      }
-    }
-
-    .floating-modak {
-      animation: float-modak 1s ease-in-out infinite;
-    }
-
+    /* Structured Marquee */
     .marquee-track {
       display: flex;
       width: max-content;
-      animation: marquee 25s linear infinite;
+      animation: marquee 30s linear infinite;
     }
 
     @keyframes marquee {
@@ -198,427 +113,331 @@
       }
     }
 
-    .parallax-wrapper {
+    /* Image Parallax & Hover with Smooth Rounded Corners */
+    .img-frame {
       overflow: hidden;
       position: relative;
+      border-radius: 2rem;
+      box-shadow: 0 20px 40px -15px rgba(127, 29, 29, 0.2);
     }
 
-    .parallax-img {
+    .img-frame img {
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
       will-change: transform;
-      height: 120%;
-      width: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: -10%;
+    }
+
+    .img-frame:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Soft Rounded Cards & Glass Panels */
+    .glass-panel {
+      background: rgba(255, 245, 209, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(127, 29, 29, 0.12);
+      border-radius: 2rem;
+    }
+
+    .pill-btn {
+      border-radius: 9999px;
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .pill-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -5px rgba(127, 29, 29, 0.3);
     }
   </style>
 </head>
 
-<body class="bg-seamless min-h-screen">
+<body class="min-h-screen">
 
-  <!-- Preloader -->
+  <!-- Minimalist Preloader -->
   <div id="preloader">
-    <div class="text-center">
-      <div class="w-16 h-16 mx-auto mb-4 text-red-800 animate-bounce">
-        <svg viewBox="0 0 100 100" class="w-full h-full fill-current">
-          <circle cx="50" cy="65" r="25" fill="#7F1D1D" />
-          <circle cx="50" cy="35" r="18" fill="#7F1D1D" />
-          <polygon points="35,20 50,0 65,20" fill="#DC2626" />
-        </svg>
-      </div>
-      <p class="font-cinzel font-bold text-red-800 tracking-widest text-sm">IITGN GANESHOTSAV 2026</p>
-    </div>
+    <div class="w-12 h-12 border-4 border-red-800/20 border-t-red-800 rounded-full animate-spin"></div>
   </div>
 
-  <main class="relative w-full overflow-x-hidden">
+  <!-- FIXED SCROLLING MURTI ANIMATION -->
+  <div class="fixed inset-0 w-full h-full flex justify-center items-center pointer-events-none z-0"
+    id="murti-container">
+    <svg viewBox="0 0 500 500"
+      class="w-[120vw] h-[120vw] max-w-[800px] max-h-[800px] opacity-20 text-red-900 drop-shadow-sm" id="murti-svg">
+      <!-- Divine Halo / Mandala -->
+      <g id="mandala" class="origin-center" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="250" cy="250" r="180" stroke-dasharray="4 8" />
+        <circle cx="250" cy="250" r="200" stroke-width="0.5" />
+        <path d="M 250 30 L 250 50 M 250 450 L 250 470 M 30 250 L 50 250 M 450 250 L 470 250" stroke-width="2" />
+        <path d="M 95 95 L 110 110 M 405 405 L 390 390 M 95 405 L 110 390 M 405 95 L 390 110" stroke-width="2" />
+      </g>
 
-    <div class="fixed inset-0 w-full h-full pointer-events-none z-0 flex justify-center items-center overflow-hidden">
-      <div class="relative w-[150vw] h-[150vw] max-w-[900px] max-h-[900px] flex justify-center items-center opacity-80">
+      <!-- Ganesha Geometric Line Art -->
+      <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Ears -->
+        <path class="murti-path" d="M 200 180 C 80 150 40 300 160 330 C 170 335 180 330 190 310" />
+        <path class="murti-path" d="M 300 180 C 420 150 460 300 340 330 C 330 335 320 330 310 310" />
+        <!-- Mukut (Crown) -->
+        <path class="murti-path" d="M 180 150 L 250 40 L 320 150 L 285 180 L 215 180 Z" />
+        <path class="murti-path" d="M 210 120 L 250 70 L 290 120" />
+        <path class="murti-path" d="M 230 150 L 250 120 L 270 150" />
+        <!-- Head & Trunk -->
+        <path class="murti-path"
+          d="M 215 180 L 285 180 C 285 240 300 320 270 380 C 240 440 160 450 120 400 C 80 350 120 320 160 340 C 190 355 210 390 230 350 C 245 310 235 240 215 180 Z" />
+        <!-- Eyes -->
+        <path class="murti-path" d="M 190 230 Q 210 215 225 235" />
+        <path class="murti-path" d="M 310 230 Q 290 215 275 235" />
+        <!-- Tusks -->
+        <path class="murti-path" d="M 195 270 L 175 300 L 205 290" />
+        <path class="murti-path" d="M 305 270 L 335 310 L 295 290" />
+        <!-- Tilak -->
+        <path class="murti-path" stroke-width="8" stroke="#DC2626" d="M 250 195 L 250 220" />
+        <circle cx="250" cy="235" r="4" fill="#DC2626" stroke="none" />
+      </g>
+    </svg>
+  </div>
 
-        <div class="absolute w-[50%] h-[50%] bg-yellow-100 rounded-full blur-[60px] animate-glow mix-blend-overlay">
-        </div>
-
-        <svg viewBox="0 0 200 200" class="absolute inset-0 w-full h-full text-yellow-500 fill-current animate-sunrise">
-          <g transform="translate(100,100)">
-            <path d="M-3,-100 L3,-100 L0,0 Z" />
-            <path d="M-3,-100 L3,-100 L0,0 Z" transform="rotate(30)" />
-            <path d="M-3,-100 L3,-100 L0,0 Z" transform="rotate(60)" />
-            <path d="M-3,-100 L3,-100 L0,0 Z" transform="rotate(90)" />
-            <path d="M-3,-100 L3,-100 L0,0 Z" transform="rotate(120)" />
-            <path d="M-3,-100 L3,-100 L0,0 Z" transform="rotate(150)" />
-            <path d="M-3,-100 L3,-100 L0,0 Z" transform="rotate(180)" />
-            <path d="M-3,-100 L3,-100 L0,0 Z" transform="rotate(210)" />
-            <path d="M-3,-100 L3,-100 L0,0 Z" transform="rotate(240)" />
-            <path d="M-3,-100 L3,-100 L0,0 Z" transform="rotate(270)" />
-            <path d="M-3,-100 L3,-100 L0,0 Z" transform="rotate(300)" />
-            <path d="M-3,-100 L3,-100 L0,0 Z" transform="rotate(330)" />
-          </g>
-        </svg>
-
-        <div class="absolute inset-0 flex justify-center items-center drop-shadow-2xl">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="w-[50%] h-[50%]">
-            <circle cx="50" cy="65" r="25" fill="#7F1D1D" />
-            <path d="M 35 85 Q 50 95 65 85" fill="none" stroke="#450A0A" stroke-width="4" />
-            <circle cx="50" cy="35" r="18" fill="#7F1D1D" />
-            <ellipse cx="25" cy="35" rx="12" ry="15" fill="#7F1D1D" />
-            <ellipse cx="75" cy="35" rx="12" ry="15" fill="#7F1D1D" />
-            <polygon points="35,20 50,0 65,20" fill="#DC2626" />
-            <circle cx="50" cy="0" r="3" fill="#991B1B" />
-            <path d="M 45 45 Q 45 65 35 70" fill="none" stroke="#7F1D1D" stroke-width="10" stroke-linecap="round" />
-            <path d="M 45 45 Q 45 65 35 70" fill="none" stroke="#450A0A" stroke-width="2" stroke-linecap="round" />
-            <circle cx="42" cy="32" r="2" fill="#2A0606" />
-            <circle cx="58" cy="32" r="2" fill="#2A0606" />
-            <line x1="50" y1="20" x2="50" y2="26" stroke="#DC2626" stroke-width="2" />
-            <circle cx="50" cy="28" r="1.5" fill="#991B1B" />
-            <path d="M 28 55 Q 15 65 25 75" fill="none" stroke="#7F1D1D" stroke-width="8" stroke-linecap="round" />
-            <circle cx="25" cy="75" r="4" fill="#DC2626" />
-            <path d="M 72 55 Q 85 45 80 30" fill="none" stroke="#7F1D1D" stroke-width="8" stroke-linecap="round" />
-            <circle cx="80" cy="30" r="4" fill="#DC2626" />
-          </svg>
-        </div>
-
+  <!-- Navbar -->
+  <nav
+    class="fixed top-0 left-0 w-full px-8 py-5 flex justify-between items-center z-50 transition-transform duration-500 bg-gradient-to-b from-[#FDDE6C] via-[#FDDE6C]/80 to-transparent backdrop-blur-sm"
+    id="navbar">
+    <a href="#" class="flex items-center gap-3 text-red-900 group">
+      <svg class="w-8 h-8 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+        <path
+          d="M12 2C9.5 2 7.5 4 7.5 6.5C7.5 7.5 7.8 8.4 8.3 9.2C6.5 10.2 5.2 12.1 5.2 14.3C5.2 17.5 7.8 20.1 11 20.1H13C16.2 20.1 18.8 17.5 18.8 14.3C18.8 12.1 17.5 10.2 15.7 9.2C16.2 8.4 16.5 7.5 16.5 6.5C16.5 4 14.5 2 12 2ZM12 4C13.4 4 14.5 5.1 14.5 6.5C14.5 7.9 13.4 9 12 9C10.6 9 9.5 7.9 9.5 6.5C9.5 5.1 10.6 4 12 4ZM12 11C14.8 11 17.1 13.1 17.5 15.8C16.6 16.5 15.4 17 14 17.2C13.4 16.5 12.5 16 12 16C11.5 16 10.6 16.5 10 17.2C8.6 17 7.4 16.5 6.5 15.8C6.9 13.1 9.2 11 12 11Z" />
+      </svg>
+      <div>
+        <span class="font-bold text-sm tracking-widest block leading-tight">IITGN</span>
+        <span class="text-[10px] uppercase font-semibold tracking-widest text-red-800">Ganeshotsav</span>
       </div>
+    </a>
+    <div class="hidden md:flex gap-10 text-xs font-semibold uppercase tracking-widest text-amber-950 items-center">
+      <a href="#memories" onclick="lenis.scrollTo('#memories'); return false;"
+        class="hover:text-red-700 transition">Memories</a>
+      <a href="#timeline" onclick="lenis.scrollTo('#timeline'); return false;"
+        class="hover:text-red-700 transition">Itinerary</a>
+      <a href="#participate" onclick="lenis.scrollTo('#participate'); return false;"
+        class="hover:text-red-700 transition">Participate</a>
     </div>
+    <a href="#participate" onclick="lenis.scrollTo('#participate'); return false;"
+      class="bg-red-900 text-[#FDDE6C] px-6 py-2.5 pill-btn text-xs tracking-widest uppercase font-semibold hover:bg-red-950 transition shadow-md">Contribute</a>
+  </nav>
 
-    <!-- Navbar with Refined Ganesha Icon & Instant Scroll Triggers -->
-    <nav
-      class="fixed top-0 left-0 w-full px-6 py-3 flex justify-between items-center z-50 bg-white/30 backdrop-blur-md border-b border-amber-900/10 transition-transform duration-500 will-change-transform"
-      id="navbar">
-      <a href="index.html" class="flex items-center gap-2.5 text-red-800 min-h-[44px] min-w-[44px] py-2">
-        <svg class="w-8 h-8 fill-current drop-shadow-sm" viewBox="0 0 24 24">
-          <path
-            d="M12 2C9.5 2 7.5 4 7.5 6.5C7.5 7.5 7.8 8.4 8.3 9.2C6.5 10.2 5.2 12.1 5.2 14.3C5.2 17.5 7.8 20.1 11 20.1H13C16.2 20.1 18.8 17.5 18.8 14.3C18.8 12.1 17.5 10.2 15.7 9.2C16.2 8.4 16.5 7.5 16.5 6.5C16.5 4 14.5 2 12 2ZM12 4C13.4 4 14.5 5.1 14.5 6.5C14.5 7.9 13.4 9 12 9C10.6 9 9.5 7.9 9.5 6.5C9.5 5.1 10.6 4 12 4ZM12 11C14.8 11 17.1 13.1 17.5 15.8C16.6 16.5 15.4 17 14 17.2C13.4 16.5 12.5 16 12 16C11.5 16 10.6 16.5 10 17.2C8.6 17 7.4 16.5 6.5 15.8C6.9 13.1 9.2 11 12 11Z" />
-        </svg>
-        <div>
-          <span class="font-bold text-sm tracking-widest leading-none block">IITGN</span>
-          <span class="text-[10px] uppercase font-semibold tracking-widest">Ganeshotsav</span>
+  <main class="relative z-10 w-full overflow-hidden">
+
+    <!-- Hero Section (Reduced top spacing to fix excessive gap) -->
+    <header class="min-h-[85vh] flex flex-col items-center justify-center pt-28 pb-12 px-6">
+      <div class="text-center w-full max-w-5xl gs-hero">
+
+        <!-- Interactive Pill Badges with Hover Animations -->
+        <div class="flex justify-center gap-4 text-xs font-semibold tracking-widest uppercase text-red-900 mb-8">
+          <div
+            class="pill-btn border border-red-900/30 px-5 py-2 bg-white/40 backdrop-blur-md cursor-pointer hover:bg-red-900 hover:text-white transition-all duration-300 flex items-center gap-2 shadow-sm">
+            <svg class="w-3.5 h-3.5 fill-current opacity-70" viewBox="0 0 24 24">
+              <path
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+            </svg>
+            IIT Gandhinagar
+          </div>
+          <div
+            class="pill-btn border border-red-900/30 px-5 py-2 bg-white/40 backdrop-blur-md cursor-pointer hover:bg-red-900 hover:text-white transition-all duration-300 flex items-center gap-2 shadow-sm">
+            <svg class="w-3.5 h-3.5 fill-current opacity-70" viewBox="0 0 24 24">
+              <path
+                d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z" />
+            </svg>
+            Sep 7 — Sep 11, 2026
+          </div>
         </div>
-      </a>
-      <div class="hidden md:flex gap-8 text-sm font-medium text-amber-950 items-center">
-        <a href="#memories" onclick="lenis.scrollTo('#memories'); return false;"
-          class="hover:text-red-700 transition min-h-[44px] flex items-center cursor-pointer">Memories</a>
-        <a href="#timeline" onclick="lenis.scrollTo('#timeline'); return false;"
-          class="hover:text-red-700 transition min-h-[44px] flex items-center cursor-pointer">Itinerary</a>
-        <a href="#plans" onclick="lenis.scrollTo('#plans'); return false;"
-          class="hover:text-red-700 transition min-h-[44px] flex items-center cursor-pointer">Participate</a>
-      </div>
-      <a href="#plans" onclick="lenis.scrollTo('#plans'); return false;"
-        class="bg-red-800 text-white px-5 min-h-[44px] flex items-center justify-center rounded-full text-sm font-semibold hover:bg-red-900 transition shadow-lg cursor-pointer">Contribute
-        ↗</a>
-    </nav>
 
-    <header class="relative w-full flex flex-col items-center justify-start pt-28 sm:pt-40 pb-12 sm:pb-20">
-      <div
-        class="flex justify-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium text-amber-900 mb-6 relative z-10 gs-hero">
-        <span
-          class="flex items-center gap-1.5 sm:gap-2 bg-white/50 px-4 py-2 rounded-full border border-amber-900/10 backdrop-blur-sm">📍
-          IIT Gandhinagar</span>
-        <span
-          class="flex items-center gap-1.5 sm:gap-2 bg-white/50 px-4 py-2 rounded-full border border-amber-900/10 backdrop-blur-sm">🗓️
-          7 Sep — 11 Sep, 2026</span>
-      </div>
-
-      <div class="text-center relative z-20 gs-hero w-full px-4">
-        <h1 class="font-cinzel font-bold text-red-800 text-sm sm:text-lg tracking-[0.2em] uppercase mb-4">Annual
-          Student-Led Ganeshotsav Celebration at IIT Gandhinagar</h1>
-
-        <div class="flex flex-col items-center justify-center w-full mb-6 sm:mb-12">
-          <p
-            class="font-cinzel font-semibold text-[11vw] sm:text-6xl md:text-7xl leading-none text-amber-950 tracking-tight z-10 m-0">
-            GANESHOTSAV</p>
+        <h1 class="font-cinzel font-bold text-red-900 text-[12vw] sm:text-[7.5rem] leading-[0.9] tracking-tight mb-6">
+          GANESHOTSAV<br>
           <span
-            class="font-cinzel italic text-[14vw] sm:text-5xl leading-none text-red-700/90 drop-shadow-lg z-0 mt-2">2026</span>
-        </div>
+            class="text-[7vw] sm:text-[4.5rem] text-amber-700/80 italic font-light tracking-normal block mt-2">2026</span>
+        </h1>
 
-        <p class="text-amber-950 font-medium text-sm sm:text-lg max-w-lg mx-auto leading-relaxed relative z-20">
-          Where devotion meets the vibrant spirit of our campus. Come celebrate the remover of obstacles with us.
+        <p class="text-amber-950/80 font-medium text-sm sm:text-lg max-w-xl mx-auto leading-relaxed mt-6">
+          A meticulously crafted student-led celebration. Where devotion meets the creative and vibrant spirit of our
+          campus.
         </p>
+      </div>
 
-        <div class="mt-8 relative z-20 flex justify-center">
-          <a href="#plans" onclick="lenis.scrollTo('#plans'); return false;"
-            class="bg-red-800 text-white font-semibold px-8 py-3 rounded-full min-h-[44px] min-w-[44px] flex items-center justify-center shadow-lg hover:bg-red-900 transition text-sm cursor-pointer">Register
-            for Events & Contribute</a>
+      <!-- Clean Countdown -->
+      <div class="flex justify-center gap-6 sm:gap-12 mt-14 gs-hero border-y border-red-900/10 py-6 w-full max-w-3xl">
+        <div class="flex flex-col items-center">
+          <div class="text-red-900 font-cinzel font-bold text-3xl sm:text-5xl" id="cd-days">00</div>
+          <span class="text-[10px] sm:text-xs uppercase font-bold tracking-widest text-amber-950/60 mt-1">Days</span>
         </div>
-
-        <div class="flex justify-center gap-2 sm:gap-4 mt-8 sm:mt-12 relative z-20">
-          <div class="flex flex-col items-center">
-            <div
-              class="bg-white/60 backdrop-blur-md border border-amber-900/10 text-red-800 font-cinzel font-bold text-xl sm:text-4xl w-12 h-12 sm:w-20 sm:h-20 flex items-center justify-center rounded-2xl shadow-lg"
-              id="cd-days">00</div>
-            <span class="text-[12px] uppercase font-bold tracking-widest text-amber-950 mt-2">Days</span>
-          </div>
-          <div
-            class="text-red-800 font-cinzel font-bold text-xl sm:text-4xl flex items-center justify-center h-12 sm:h-20">
-            :</div>
-          <div class="flex flex-col items-center">
-            <div
-              class="bg-white/60 backdrop-blur-md border border-amber-900/10 text-red-800 font-cinzel font-bold text-xl sm:text-4xl w-12 h-12 sm:w-20 sm:h-20 flex items-center justify-center rounded-2xl shadow-lg"
-              id="cd-hours">00</div>
-            <span class="text-[12px] uppercase font-bold tracking-widest text-amber-950 mt-2">Hours</span>
-          </div>
-          <div
-            class="text-red-800 font-cinzel font-bold text-xl sm:text-4xl flex items-center justify-center h-12 sm:h-20">
-            :</div>
-          <div class="flex flex-col items-center">
-            <div
-              class="bg-white/60 backdrop-blur-md border border-amber-900/10 text-red-800 font-cinzel font-bold text-xl sm:text-4xl w-12 h-12 sm:w-20 sm:h-20 flex items-center justify-center rounded-2xl shadow-lg"
-              id="cd-mins">00</div>
-            <span class="text-[12px] uppercase font-bold tracking-widest text-amber-950 mt-2">Mins</span>
-          </div>
-          <div
-            class="text-red-800 font-cinzel font-bold text-xl sm:text-4xl flex items-center justify-center h-12 sm:h-20">
-            :</div>
-          <div class="flex flex-col items-center">
-            <div
-              class="bg-white/60 backdrop-blur-md border border-amber-900/10 text-red-800 font-cinzel font-bold text-xl sm:text-4xl w-12 h-12 sm:w-20 sm:h-20 flex items-center justify-center rounded-2xl shadow-lg"
-              id="cd-secs">00</div>
-            <span class="text-[12px] uppercase font-bold tracking-widest text-amber-950 mt-2">Secs</span>
-          </div>
+        <div class="flex flex-col items-center">
+          <div class="text-red-900 font-cinzel font-bold text-3xl sm:text-5xl" id="cd-hours">00</div>
+          <span class="text-[10px] sm:text-xs uppercase font-bold tracking-widest text-amber-950/60 mt-1">Hours</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="text-red-900 font-cinzel font-bold text-3xl sm:text-5xl" id="cd-mins">00</div>
+          <span class="text-[10px] sm:text-xs uppercase font-bold tracking-widest text-amber-950/60 mt-1">Mins</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="text-red-900 font-cinzel font-bold text-3xl sm:text-5xl" id="cd-secs">00</div>
+          <span class="text-[10px] sm:text-xs uppercase font-bold tracking-widest text-amber-950/60 mt-1">Secs</span>
         </div>
       </div>
     </header>
 
-    <div
-      class="w-full bg-red-900/95 text-yellow-400 py-3 sm:py-4 border-y-4 border-amber-600/50 overflow-hidden relative z-20 shadow-xl">
+    <!-- Structured Marquee -->
+    <div class="w-full bg-red-900 text-[#FDDE6C] py-4 border-y border-red-950 overflow-hidden shadow-lg">
       <div
-        class="marquee-track flex gap-6 sm:gap-8 items-center font-cinzel font-bold tracking-widest text-base sm:text-xl uppercase whitespace-nowrap">
-        <span>✨ SUKHKARTA DUKHHARTA ✨</span><span>VARTA VIGHNACHI</span>
-        <span>✨ NURAAVI PURAVI ✨</span><span>PREM KRUPAYACHI</span>
-        <span>✨ SUKHKARTA DUKHHARTA ✨</span><span>VARTA VIGHNACHI</span>
-        <span>✨ NURAAVI PURAVI ✨</span><span>PREM KRUPAYACHI</span>
+        class="marquee-track flex gap-12 items-center font-cinzel font-semibold tracking-widest text-sm sm:text-base uppercase whitespace-nowrap">
+        <span>• Sukhkarta Dukhharta •</span><span>Varta Vighnachi</span>
+        <span>• Nuraavi Puravi •</span><span>Prem Krupayachi</span>
+        <span>• Sukhkarta Dukhharta •</span><span>Varta Vighnachi</span>
+        <span>• Nuraavi Puravi •</span><span>Prem Krupayachi</span>
       </div>
     </div>
 
-    <!-- Social Proof Section -->
-    <section class="py-16 px-6 max-w-4xl mx-auto relative z-20 text-center">
-      <div class="bg-white/50 backdrop-blur-md border border-amber-900/10 p-8 rounded-3xl shadow-lg">
-        <p class="font-cinzel italic text-amber-950 text-lg sm:text-xl mb-4">"The energy during the Aagman Yatra and the
-          community aartis at IITGN is unmatched. It truly feels like home away from home."</p>
-        <div class="flex items-center justify-center gap-4">
-          <div class="w-12 h-12 rounded-full bg-red-800 text-white flex items-center justify-center font-bold text-lg">A
-          </div>
-          <div class="text-left">
-            <h4 class="font-bold text-amber-950 text-sm">Aniket Sharma</h4>
-            <p class="text-amber-800 text-xs">BTech Class of '25</p>
-          </div>
+    <!-- Editorial Memories Section -->
+    <section id="memories" class="py-24 sm:py-32 px-6 sm:px-12 max-w-7xl mx-auto">
+      <div
+        class="flex flex-col md:flex-row justify-between items-end mb-16 sm:mb-24 gs-reveal border-b border-red-900/20 pb-8">
+        <div>
+          <h2 class="font-cinzel text-4xl sm:text-6xl font-bold text-red-900 leading-none">Photobook</h2>
+          <p class="text-amber-900/70 mt-4 text-sm sm:text-lg font-medium tracking-wide">Vibrant and clear moments from
+            our past celebrations.</p>
         </div>
-      </div>
-    </section>
-
-    <section id="memories" class="relative z-20 py-20 sm:py-32 px-6 sm:px-12 max-w-7xl mx-auto">
-      <div class="text-center mb-16 sm:mb-24 gs-reveal">
-        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-amber-950">Cherished Memories</h2>
-        <p class="text-amber-800 mt-2 sm:mt-4 text-sm sm:text-lg">Vibrant and clear moments from our past celebrations.
-        </p>
+        <a href="gallery.html"
+          class="hidden md:inline-block text-xs font-bold tracking-widest uppercase text-red-800 hover:text-red-950 transition border-b-2 border-red-800 pb-1 mt-6">View
+          Complete Gallery</a>
       </div>
 
-      <div class="mb-16 sm:mb-32 flex flex-col md:flex-row items-center gap-8 sm:gap-16 image-card">
-        <div class="w-full md:w-7/12">
-          <div
-            class="parallax-wrapper rounded-3xl sm:rounded-[2rem] shadow-xl sm:shadow-2xl border-4 sm:border-8 border-white/80 aspect-video">
-            <img src="image_ed7910.png" alt="Sthapana" class="parallax-img">
-          </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 sm:gap-24 items-center mb-24 image-card">
+        <div class="img-frame bg-amber-900/5 aspect-[4/3]">
+          <img src="assets/image_ed7910.png" alt="Divine Sthapana"
+            class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 parallax-img">
         </div>
-        <div class="w-full md:w-5/12 text-left">
-          <div class="w-12 h-1 bg-red-700 mb-4 sm:mb-6 hidden md:block"></div>
-          <h3 class="font-cinzel text-2xl sm:text-4xl font-bold text-red-800 mb-2 sm:mb-4">Divine Sthapana</h3>
-          <p class="text-amber-950 leading-relaxed text-sm sm:text-lg">The glorious arrival of Ganpati Bappa. A moment
-            of pure peace, traditional rituals, and campus-wide devotion beautifully illuminated.</p>
+        <div class="max-w-md">
+          <span class="text-xs font-bold tracking-widest text-amber-700 uppercase mb-4 block">01 / The Arrival</span>
+          <h3 class="font-cinzel text-3xl sm:text-4xl font-bold text-red-900 mb-6 leading-tight">Divine Sthapana</h3>
+          <p class="text-amber-950/80 leading-relaxed text-sm sm:text-base mb-8">The glorious arrival of Ganpati Bappa.
+            A moment of pure peace, traditional rituals, and campus-wide devotion beautifully illuminated in the heart
+            of Panchaangan.</p>
         </div>
       </div>
 
-      <div class="mb-16 sm:mb-32 flex flex-col md:flex-row-reverse items-center gap-8 sm:gap-16 image-card">
-        <div class="w-full md:w-7/12">
-          <div
-            class="parallax-wrapper rounded-3xl sm:rounded-[2rem] shadow-xl sm:shadow-2xl border-4 sm:border-8 border-white/80 aspect-[4/3]">
-            <img src="image_ed792c.png" alt="Decoration" class="parallax-img">
-          </div>
-        </div>
-        <div class="w-full md:w-5/12 text-left">
-          <div class="w-12 h-1 bg-amber-600 mb-4 sm:mb-6 hidden md:block"></div>
-          <h3 class="font-cinzel text-2xl sm:text-4xl font-bold text-red-800 mb-2 sm:mb-4">Artistic Brilliance</h3>
-          <p class="text-amber-950 leading-relaxed text-sm sm:text-lg">Student-led decorations showcasing unparalleled
-            creativity. Vibrant floral themes and lighting that bring the New Panchaangan to life.</p>
-        </div>
-      </div>
-
-      <div class="mb-12 sm:mb-20 flex flex-col md:flex-row items-center gap-8 sm:gap-16 image-card">
-        <div class="w-full md:w-7/12">
-          <div
-            class="parallax-wrapper rounded-3xl sm:rounded-[2rem] shadow-xl sm:shadow-2xl border-4 sm:border-8 border-white/80 aspect-video">
-            <img src="image_ed794e.png" alt="ISRO Theme" class="parallax-img">
-          </div>
-        </div>
-        <div class="w-full md:w-5/12 text-left">
-          <div class="w-12 h-1 bg-red-700 mb-4 sm:mb-6 hidden md:block"></div>
-          <h3 class="font-cinzel text-2xl sm:text-4xl font-bold text-red-800 mb-2 sm:mb-4">Unique Themes</h3>
-          <p class="text-amber-950 leading-relaxed text-sm sm:text-lg">From Chandrayaan tributes to cultural epics. Our
-            community brings innovative storytelling and national pride to the pandal every single year.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="timeline" class="py-20 sm:py-32 px-6 max-w-4xl mx-auto relative z-20">
-      <div class="text-center mb-16 sm:mb-24 gs-reveal">
-        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-amber-950">The Grand Itinerary</h2>
-        <p class="text-amber-800 mt-2 sm:mt-4 text-sm sm:text-lg">Five days of non-stop devotion, music, and
-          celebration.</p>
-      </div>
-
-      <div class="border-l-4 border-red-700/20 pl-6 sm:pl-12 ml-4 sm:ml-8 space-y-12 sm:space-y-20">
-        <div class="relative gs-reveal-timeline">
-          <div
-            class="absolute -left-[37px] sm:-left-[61px] top-1 w-6 h-6 bg-red-700 rounded-full border-4 border-[#FFF5D1] shadow-lg">
-          </div>
-          <span class="text-red-700 font-bold tracking-widest text-xs sm:text-sm uppercase">September 6</span>
-          <h3 class="font-cinzel text-xl sm:text-3xl font-bold text-amber-950 mt-1 sm:mt-2 mb-2 sm:mb-3">Aagman Yatra
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 sm:gap-24 items-center mb-24 image-card">
+        <div class="max-w-md lg:order-1 order-2 lg:ml-auto">
+          <span class="text-xs font-bold tracking-widest text-amber-700 uppercase mb-4 block">02 / Creativity</span>
+          <h3 class="font-cinzel text-3xl sm:text-4xl font-bold text-red-900 mb-6 leading-tight">Artistic Brilliance
           </h3>
-          <p class="text-amber-900 text-sm sm:text-lg leading-relaxed">The grand procession begins from the Central
-            Arcade towards the Hostel Block (Panchaangan) at 6:30 PM. Join us in welcoming Bappa with Dhol beats.</p>
+          <p class="text-amber-950/80 leading-relaxed text-sm sm:text-base mb-8">Student-led decorations showcasing
+            unparalleled creativity. From intricate floral themes to lighting architectures that bring the festival to
+            life.</p>
         </div>
-        <div class="relative gs-reveal-timeline">
-          <div
-            class="absolute -left-[37px] sm:-left-[61px] top-1 w-6 h-6 bg-amber-500 rounded-full border-4 border-[#FFF5D1] shadow-lg">
-          </div>
-          <span class="text-amber-600 font-bold tracking-widest text-xs sm:text-sm uppercase">September 7</span>
-          <h3 class="font-cinzel text-xl sm:text-3xl font-bold text-amber-950 mt-1 sm:mt-2 mb-2 sm:mb-3">Sthapana & Maha
-            Aarti</h3>
-          <p class="text-amber-900 text-sm sm:text-lg leading-relaxed">Sthapana Pooja commences at 11:00 AM at the New
-            Panchaangan. The first Maha Aarti of the festival will take place at 7:30 PM.</p>
-        </div>
-        <div class="relative gs-reveal-timeline">
-          <div
-            class="absolute -left-[37px] sm:-left-[61px] top-1 w-6 h-6 bg-red-700 rounded-full border-4 border-[#FFF5D1] shadow-lg">
-          </div>
-          <span class="text-red-700 font-bold tracking-widest text-xs sm:text-sm uppercase">September 8</span>
-          <h3 class="font-cinzel text-xl sm:text-3xl font-bold text-amber-950 mt-1 sm:mt-2 mb-2 sm:mb-3">Cultural Night
-            & Open Mic</h3>
-          <p class="text-amber-900 text-sm sm:text-lg leading-relaxed">A mesmerizing evening starting at 9:00 PM
-            featuring Kathak performances, flute recitals, and an open mic for the IITGN community.</p>
-        </div>
-        <div class="relative gs-reveal-timeline">
-          <div
-            class="absolute -left-[37px] sm:-left-[61px] top-1 w-6 h-6 bg-amber-500 rounded-full border-4 border-[#FFF5D1] shadow-lg">
-          </div>
-          <span class="text-amber-600 font-bold tracking-widest text-xs sm:text-sm uppercase">September 11</span>
-          <h3 class="font-cinzel text-xl sm:text-3xl font-bold text-amber-950 mt-1 sm:mt-2 mb-2 sm:mb-3">Maha Aarti &
-            Visarjan</h3>
-          <p class="text-amber-900 text-sm sm:text-lg leading-relaxed">The final Maha Aarti at 5:00 PM, followed by the
-            grand Visarjan procession at 6:00 PM starting from the New Panchaangan.</p>
+        <div class="img-frame bg-amber-900/5 aspect-[4/3] lg:order-2 order-1">
+          <img src="assets/image_ed794e.png" alt="Artistic Decor"
+            class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 parallax-img">
         </div>
       </div>
     </section>
 
-    <!-- Conversion & Action Section -->
-    <section id="plans"
-      class="py-16 sm:py-24 px-6 sm:px-12 bg-white/40 rounded-3xl sm:rounded-[3rem] mx-4 sm:mx-10 mb-24 sm:mb-32 border border-white/60 shadow-xl backdrop-blur-md gs-reveal relative z-20">
-      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
-
-        <div
-          class="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-sm hover:shadow-lg hover:-translate-y-2 sm:hover:-translate-y-4 transition-all duration-300 border border-amber-100/50 flex flex-col justify-between">
-          <div>
-            <div class="text-2xl sm:text-4xl mb-3 sm:mb-6">📸</div>
-            <h3 class="font-cinzel text-lg sm:text-2xl font-bold text-amber-950 mb-2 sm:mb-3">Previous Years</h3>
-            <p class="text-amber-800/80 mb-5 sm:mb-8 text-xs sm:text-base leading-relaxed">Explore the complete
-              high-resolution gallery of past Aartis, Dhol Tasha, and Visarjans.</p>
-          </div>
-          <a href="gallery.html"
-            class="text-red-700 font-bold text-xs sm:text-sm tracking-widest uppercase flex items-center gap-2 hover:text-red-900 transition-colors w-fit min-h-[44px] flex items-center">View
-            Gallery →</a>
+    <!-- Itinerary Section (Alternating Zig-Zag Layout) -->
+    <section id="timeline" class="py-24 sm:py-32 px-6 bg-ivory/95 border-y border-red-900/10">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-20 gs-reveal">
+          <h2 class="font-cinzel text-4xl sm:text-6xl font-bold text-red-900">The Itinerary</h2>
+          <p class="text-amber-900/70 mt-4 text-sm sm:text-base tracking-wide uppercase font-semibold">Five Days of
+            Devotion</p>
         </div>
 
-        <div
-          class="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-sm hover:shadow-lg hover:-translate-y-2 sm:hover:-translate-y-4 transition-all duration-300 border border-amber-100/50 flex flex-col justify-between">
-          <div>
-            <div class="text-2xl sm:text-4xl mb-3 sm:mb-6">🎭</div>
-            <h3 class="font-cinzel text-lg sm:text-2xl font-bold text-amber-950 mb-2 sm:mb-3">Cult Night</h3>
-            <p class="text-amber-800/80 mb-5 sm:mb-8 text-xs sm:text-base leading-relaxed">Register for dance
-              performances, musical recitals, and open mics on Cultural Night.</p>
+        <div class="relative border-l-2 border-red-900/20 ml-4 sm:ml-1/2 space-y-16">
+
+          <!-- Item 1: Left -->
+          <div class="relative pl-8 sm:pl-0 sm:w-1/2 sm:pr-12 sm:text-right sm:-left-full gs-reveal-timeline">
+            <div
+              class="absolute left-[-7px] sm:left-auto sm:right-[-7px] top-1.5 w-3 h-3 bg-red-900 rounded-full border-2 border-ivory">
+            </div>
+            <span class="text-amber-700 font-bold tracking-widest text-xs uppercase block mb-2">September 6, 6:30
+              PM</span>
+            <h3 class="font-cinzel text-2xl font-bold text-red-900 mb-3">Aagman Yatra</h3>
+            <p class="text-amber-950/80 text-sm leading-relaxed">The grand procession begins from the Central Arcade
+              towards the Hostel Block (Panchaangan). Join us in welcoming Bappa with Dhol beats.</p>
           </div>
+
+          <!-- Item 2: Right -->
+          <div class="relative pl-8 sm:pl-12 sm:w-1/2 sm:ml-auto gs-reveal-timeline">
+            <div class="absolute left-[-7px] top-1.5 w-3 h-3 bg-red-900 rounded-full border-2 border-ivory"></div>
+            <span class="text-amber-700 font-bold tracking-widest text-xs uppercase block mb-2">September 7, 11:00
+              AM</span>
+            <h3 class="font-cinzel text-2xl font-bold text-red-900 mb-3">Sthapana & Maha Aarti</h3>
+            <p class="text-amber-950/80 text-sm leading-relaxed">Sthapana Pooja commences at the New Panchaangan. The
+              first Maha Aarti of the festival will take place in the evening at 7:30 PM.</p>
+          </div>
+
+          <!-- Item 3: Left -->
+          <div class="relative pl-8 sm:pl-0 sm:w-1/2 sm:pr-12 sm:text-right sm:-left-full gs-reveal-timeline">
+            <div
+              class="absolute left-[-7px] sm:left-auto sm:right-[-7px] top-1.5 w-3 h-3 bg-red-900 rounded-full border-2 border-ivory">
+            </div>
+            <span class="text-amber-700 font-bold tracking-widest text-xs uppercase block mb-2">September 8, 9:00
+              PM</span>
+            <h3 class="font-cinzel text-2xl font-bold text-red-900 mb-3">Cultural Night</h3>
+            <p class="text-amber-950/80 text-sm leading-relaxed">A mesmerizing evening featuring Kathak performances,
+              flute recitals, and an open mic exclusively for the IITGN community.</p>
+          </div>
+
+          <!-- Item 4: Right -->
+          <div class="relative pl-8 sm:pl-12 sm:w-1/2 sm:ml-auto gs-reveal-timeline">
+            <div class="absolute left-[-7px] top-1.5 w-3 h-3 bg-red-900 rounded-full border-2 border-ivory"></div>
+            <span class="text-amber-700 font-bold tracking-widest text-xs uppercase block mb-2">September 11, 5:00
+              PM</span>
+            <h3 class="font-cinzel text-2xl font-bold text-red-900 mb-3">Visarjan</h3>
+            <p class="text-amber-950/80 text-sm leading-relaxed">The final Maha Aarti, followed immediately by the grand
+              Visarjan procession moving campus-wide from the New Panchaangan.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Conversion & Action Section (Soft Rounded Corners) -->
+    <section id="participate" class="py-24 sm:py-32 px-6 max-w-5xl mx-auto gs-reveal">
+      <div class="glass-panel p-10 sm:p-16 text-center shadow-2xl relative overflow-hidden">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-red-900/5 rounded-full blur-2xl pointer-events-none"></div>
+
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-red-900 mb-6">Become a Part of the Devotion</h2>
+        <p class="text-amber-950/80 text-sm sm:text-base max-w-2xl mx-auto mb-10 leading-relaxed">
+          Ganeshotsav is built by the students, for the students. Whether you wish to perform at the Cultural Night,
+          volunteer for decorations, or contribute to the festivities, your presence makes the difference.
+        </p>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
           <a href="mailto:ganeshotsav@iitgn.ac.in"
-            class="bg-red-800 text-white font-bold text-xs sm:text-sm tracking-widest uppercase flex items-center justify-center gap-2 text-center w-full py-3 rounded-xl hover:bg-red-900 transition-colors min-h-[44px]">Register
-            via Email</a>
+            class="bg-red-900 text-[#FDDE6C] px-8 py-4 pill-btn text-xs tracking-widest uppercase font-semibold hover:bg-red-950 transition border border-red-900 shadow-md">Register
+            for Cult Night</a>
+          <a href="gallery.html"
+            class="bg-transparent text-red-900 px-8 py-4 pill-btn text-xs tracking-widest uppercase font-semibold hover:bg-red-900/5 transition border border-red-900 shadow-sm">View
+            Full Gallery</a>
         </div>
-
       </div>
     </section>
 
-    <!-- Footer with Human Contact & Privacy Policy Links -->
-    <footer class="pb-28 text-center font-semibold tracking-widest text-xs uppercase relative z-20 flex flex-col gap-3">
-      <div class="flex justify-center gap-6 text-amber-900 text-xs">
-        <a href="mailto:ganeshotsav@iitgn.ac.in" class="hover:text-red-800 min-h-[44px] flex items-center">Contact
-          Coordinator</a>
-        <a href="#privacy" class="hover:text-red-800 min-h-[44px] flex items-center">Privacy Policy</a>
+    <!-- Clean Editorial Footer -->
+    <footer
+      class="py-12 border-t border-red-900/20 text-center font-semibold tracking-widest text-xs uppercase bg-[#FDDE6C]">
+      <div class="flex justify-center gap-8 text-amber-900 mb-6 text-[10px] sm:text-xs">
+        <a href="mailto:ganeshotsav@iitgn.ac.in" class="hover:text-red-900 transition">Contact Coordinator</a>
+        <a href="#privacy" class="hover:text-red-900 transition">Privacy Policy</a>
       </div>
-      <p class="text-amber-900/50">IIT Gandhinagar • Team Ganesha 2026</p>
-      <p class="text-amber-900/40 text-[12px]">Credit - Abhiraj Meshram AI BTech '30</p>
+      <p class="text-amber-900/60 mb-2">IIT Gandhinagar • Team Ganesha 2026</p>
+      <p class="text-amber-900/40 text-[9px]">Credit - Abhiraj Meshram AI BTech '30</p>
     </footer>
 
   </main>
 
-  <div class="fixed bottom-0 left-0 w-full h-20 sm:h-24 pointer-events-none z-50 overflow-visible">
-    <div class="absolute bottom-3 sm:bottom-4 left-0 w-full h-1 sm:h-1.5 bg-amber-900/10">
-      <div id="progress-line"
-        class="h-full w-full bg-gradient-to-r from-red-800 to-amber-500 rounded-r-full shadow-[0_0_10px_rgba(220,38,38,0.5)] origin-left"
-        style="transform: scaleX(0); will-change: transform;"></div>
-    </div>
-
-    <div id="progress-character" class="absolute bottom-0 mb-3 sm:mb-4 left-0"
-      style="transform: translate3d(0,0,0); will-change: transform;">
-      <div class="w-16 h-12 sm:w-24 sm:h-20 drop-shadow-xl running-mushak">
-
-        <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-          <g class="floating-modak" transform="translate(105, 65)">
-            <path d="M0,0 Q-4,8 -4,12 A4,4 0 0,0 4,12 Q4,8 0,0" fill="#F59E0B" />
-            <circle cx="0" cy="6" r="8" fill="#F59E0B" opacity="0.3" filter="blur(2px)" />
-          </g>
-
-          <path d="M 25 65 Q 5 65 5 45 Q 5 25 15 20" fill="none" stroke="#57534E" stroke-width="4"
-            stroke-linecap="round" />
-
-          <g class="leg-b" style="transform-origin: 35px 65px;">
-            <path d="M 35 65 L 30 85 L 25 85" fill="none" stroke="#44403C" stroke-width="4" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </g>
-          <g class="leg-f" style="transform-origin: 70px 70px;">
-            <path d="M 70 70 L 65 85 L 70 85" fill="none" stroke="#44403C" stroke-width="4" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </g>
-
-          <ellipse cx="45" cy="62" rx="22" ry="14" fill="#78716C" />
-          <path d="M 50 50 Q 75 50 90 68 L 85 75 Q 60 75 50 65 Z" fill="#78716C" />
-
-          <g class="leg-f" style="transform-origin: 40px 65px;">
-            <path d="M 40 65 L 45 85 L 50 85" fill="none" stroke="#78716C" stroke-width="4" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </g>
-          <g class="leg-b" style="transform-origin: 75px 70px;">
-            <path d="M 75 70 L 80 85 L 85 85" fill="none" stroke="#78716C" stroke-width="4" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </g>
-
-          <circle cx="68" cy="48" r="7" fill="#57534E" />
-          <circle cx="60" cy="50" r="8" fill="#78716C" />
-          <circle cx="60" cy="50" r="4" fill="#FECACA" />
-
-          <circle cx="75" cy="58" r="2.5" fill="#111" />
-          <circle cx="91" cy="69" r="3" fill="#EF4444" />
-
-          <path d="M 88 72 L 100 75 M 88 72 L 98 80" stroke="#111" stroke-width="1.5" stroke-linecap="round" />
-        </svg>
-
-      </div>
-    </div>
-  </div>
-
   <script>
-    // Remove preloader on load
+    // Remove preloader
     window.addEventListener('load', () => {
       document.getElementById('preloader').classList.add('fade-out');
     });
 
-    // Countdown
-    const targetDate = new Date("September 13, 2026 00:00:00").getTime();
+    // Countdown Logic
+    const targetDate = new Date("September 7, 2026 11:00:00").getTime();
     setInterval(() => {
       const dist = targetDate - new Date().getTime();
       if (dist < 0) return;
@@ -628,44 +447,68 @@
       document.getElementById("cd-secs").innerText = Math.floor((dist % 60000) / 1000).toString().padStart(2, '0');
     }, 1000);
 
-    // Lenis Smooth Scroll with optimized duration
-    const lenis = new Lenis({ duration: 1.2, smooth: true, mouseMultiplier: 1 });
+    // Lenis Smooth Scroll Setup
+    const lenis = new Lenis({ duration: 1.2, smooth: true });
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add((time) => lenis.raf(time * 1000));
     gsap.ticker.lagSmoothing(0, 0);
+    gsap.registerPlugin(ScrollTrigger);
 
-    // GPU-Accelerated Progress Bar
+    // Navbar Hide on Scroll Down
     let lastScroll = 0;
-    const charEl = document.getElementById('progress-character');
-    const lineEl = document.getElementById('progress-line');
     const navEl = document.getElementById('navbar');
-
     lenis.on('scroll', (e) => {
-      const p = e.progress;
-      lineEl.style.transform = `scaleX(${p})`;
-
-      const charWidth = window.innerWidth < 640 ? 64 : 96;
-      const maxTravel = window.innerWidth - charWidth;
-      charEl.style.transform = `translate3d(${p * maxTravel}px, 0, 0)`;
-
       navEl.style.transform = (e.scroll > lastScroll && e.scroll > 100) ? 'translateY(-100%)' : 'translateY(0)';
       lastScroll = e.scroll;
     });
 
-    // GSAP Scroll Animations
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.utils.toArray('.parallax-img').forEach(img => {
-      gsap.to(img, { yPercent: 20, ease: "none", scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
+    // SCROLLING MURTI ANIMATION
+    const murtiTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "body",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1.5
+      }
     });
-    gsap.fromTo('.gs-hero', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2, stagger: 0.15, ease: "power3.out" });
+
+    murtiTl.to(".murti-path", { strokeDashoffset: 0, ease: "none", duration: 1 }, 0);
+    murtiTl.to("#mandala", { rotation: 90, ease: "none", duration: 1 }, 0);
+    murtiTl.to("#murti-svg", { scale: 1.15, yPercent: 15, opacity: 0.05, ease: "none", duration: 1 }, 0);
+
+    // Content Animations
+    gsap.fromTo('.gs-hero',
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.2, stagger: 0.2, ease: "power3.out", delay: 0.2 }
+    );
+
     gsap.utils.toArray('.gs-reveal').forEach(elem => {
-      gsap.fromTo(elem, { y: 40, opacity: 0 }, { scrollTrigger: { trigger: elem, start: "top 85%" }, y: 0, opacity: 1, duration: 1, ease: "power2.out" });
+      gsap.fromTo(elem,
+        { y: 50, opacity: 0 },
+        { scrollTrigger: { trigger: elem, start: "top 85%" }, y: 0, opacity: 1, duration: 1.2, ease: "power2.out" }
+      );
     });
+
     gsap.utils.toArray('.image-card').forEach(card => {
-      gsap.fromTo(card, { y: 50, opacity: 0 }, { scrollTrigger: { trigger: card, start: "top 80%" }, y: 0, opacity: 1, duration: 1.2, ease: "power2.out" });
+      gsap.fromTo(card,
+        { y: 60, opacity: 0 },
+        { scrollTrigger: { trigger: card, start: "top 80%" }, y: 0, opacity: 1, duration: 1.4, ease: "power2.out" }
+      );
     });
+
     gsap.utils.toArray('.gs-reveal-timeline').forEach((item, i) => {
-      gsap.fromTo(item, { x: -30, opacity: 0 }, { scrollTrigger: { trigger: item, start: "top 90%" }, x: 0, opacity: 1, duration: 0.8, ease: "power2.out", delay: i * 0.1 });
+      gsap.fromTo(item,
+        { y: 30, opacity: 0 },
+        { scrollTrigger: { trigger: item, start: "top 90%" }, y: 0, opacity: 1, duration: 1, ease: "power2.out" }
+      );
+    });
+
+    gsap.utils.toArray('.parallax-img').forEach(img => {
+      gsap.to(img, {
+        yPercent: 15,
+        ease: "none",
+        scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: true }
+      });
     });
   </script>
 </body>
